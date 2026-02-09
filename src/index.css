@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 209 52% 22%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 209 52% 22%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 209 52% 22%;
+
+    --primary: 209 52% 22%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 5% 46%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 5% 46%;
+
+    --accent: 16 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 16 100% 60%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 209 52% 18%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 16 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 209 52% 25%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 209 40% 30%;
+    --sidebar-ring: 16 100% 60%;
+
+    /* Custom tokens */
+    --industrial-blue: 209 52% 22%;
+    --industrial-blue-light: 209 40% 35%;
+    --safety-orange: 16 100% 60%;
+    --safety-orange-hover: 16 100% 52%;
+    --steel: 220 5% 46%;
+    --steel-light: 220 5% 72%;
+    --warm-white: 0 0% 98%;
+    --surface-elevated: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 209 52% 8%;
+    --foreground: 0 0% 95%;
+    --card: 209 52% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 209 52% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 16 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 209 40% 25%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 209 30% 18%;
+    --muted-foreground: 220 5% 65%;
+    --accent: 16 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 209 30% 22%;
+    --input: 209 30% 22%;
+    --ring: 16 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--industrial-blue))] to-[hsl(var(--safety-orange))];
+  }
+
+  .btn-cta {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-[hsl(var(--accent-foreground))] bg-[hsl(var(--safety-orange))] rounded-lg transition-all duration-200 hover:bg-[hsl(var(--safety-orange-hover))] hover:shadow-lg hover:shadow-[hsl(var(--safety-orange))/20] active:scale-[0.98];
+  }
+
+  .btn-outline-hero {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold border-2 border-[hsl(var(--warm-white))] text-[hsl(var(--warm-white))] rounded-lg transition-all duration-200 hover:bg-[hsl(var(--warm-white))] hover:text-[hsl(var(--industrial-blue))];
+  }
+
+  .spec-value {
+    @apply font-mono text-sm font-medium;
+  }
+
+  .badge-category {
+    @apply inline-flex items-center px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-[hsl(var(--safety-orange))/10] text-[hsl(var(--safety-orange))];
+  }
+}
+
+@layer utilities {
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up-delay {
+    animation: slideUp 0.6s ease-out 0.15s forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-up-delay-2 {
+    animation: slideUp 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-slow {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .animate-count-up {
+    animation: countUp 0.6s ease-out forwards;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--steel-light));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--steel));
+}
